@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Checkout — LUXO Store" />
+    <title>Checkout — LUXO Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                </ul>
+                <a href="index.html" class="logo">LUXO</a>
+                <div class="nav-icons">
+                    <a href="cart.html" style="position:relative">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header" style="background:#111; height:28vh;">
+        <div>
+            <p class="ph-eyebrow">Final Step</p>
+            <h1>Checkout</h1>
+        </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="container">
+        <div class="steps-bar">
+            <div class="step-item done">
+                <div class="step-num"><i class="fas fa-check" style="font-size:0.7rem"></i></div>
+                <span class="step-text">Cart</span>
+            </div>
+            <div class="step-item active">
+                <div class="step-num">2</div>
+                <span class="step-text">Shipping & Payment</span>
+            </div>
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <span class="step-text">Confirmation</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="checkout-page">
+        <div class="container">
+            <div class="checkout-layout">
+
+                <!-- Left -->
+                <div>
+                    <div class="box form-section" style="margin-bottom:20px">
+                        <h3><i class="fas fa-map-marker-alt" style="margin-right:8px;color:#c8a97e"></i>Shipping
+                            Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" placeholder="John" id="first-name" />
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Doe" id="last-name" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" placeholder="+1 XXX XXX XXXX" id="phone" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="email@example.com" id="email" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>City</label>
+                                <select id="city">
+                                    <option>Select City</option>
+                                    <option>New York</option>
+                                    <option>Los Angeles</option>
+                                    <option>Dubai</option>
+                                    <option>London</option>
+                                    <option>Riyadh</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>ZIP / Postal Code</label>
+                                <input type="text" placeholder="10001" id="zip" />
+                            </div>
+                        </div>
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label>Street Address</label>
+                                <input type="text" placeholder="123 Fashion Ave, Suite 4" id="address" />
+                            </div>
+                        </div>
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label>Delivery Notes (Optional)</label>
+                                <textarea rows="3" placeholder="Any special delivery instructions..."
+                                    id="notes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment -->
+                    <div class="box form-section">
+                        <h3><i class="fas fa-credit-card" style="margin-right:8px;color:#c8a97e"></i>Payment Method</h3>
+
+                        <label class="pay-option selected" for="pay-card">
+                            <input type="radio" id="pay-card" name="payment" value="card" checked
+                                onchange="toggleCard(this)" />
+                            <i class="fab fa-cc-visa pay-icon-big"></i>
+                            <div class="pay-text">
+                                <strong>Credit / Debit Card</strong>
+                                <span>Visa, Mastercard, Mada</span>
+                            </div>
+                        </label>
+
+                        <label class="pay-option" for="pay-apple">
+                            <input type="radio" id="pay-apple" name="payment" value="apple"
+                                onchange="toggleCard(this)" />
+                            <i class="fab fa-cc-apple-pay pay-icon-big"></i>
+                            <div class="pay-text">
+                                <strong>Apple Pay</strong>
+                                <span>Fast & secure checkout</span>
+                            </div>
+                        </label>
+
+                        <label class="pay-option" for="pay-cod">
+                            <input type="radio" id="pay-cod" name="payment" value="cod" onchange="toggleCard(this)" />
+                            <i class="fas fa-money-bill-wave pay-icon-big"></i>
+                            <div class="pay-text">
+                                <strong>Cash on Delivery</strong>
+                                <span>Available in select cities</span>
+                            </div>
+                        </label>
+
+                        <!-- Card fields -->
+                        <div class="card-fields show" id="card-fields">
+                            <div style="border-top:1px solid var(--border);margin:18px 0;"></div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Card Number</label>
+                                    <input type="text" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" id="card-num" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" placeholder="MM / YY" maxlength="7" id="card-exp" />
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="text" placeholder="XXX" maxlength="4" id="card-cvv" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Summary -->
+                <div class="box" style="align-self:start;position:sticky;top:80px;">
+                    <h3>Your Order</h3>
+                    <div id="co-items"></div>
+                    <div style="border-top:1px solid var(--border);margin:16px 0;"></div>
+                    <div class="summary-row"><span>Subtotal</span><span id="s-sub">$0</span></div>
+                    <div class="summary-row"><span>Shipping</span><span id="s-ship">Free</span></div>
+                    <div class="summary-row"><span>Tax (15%)</span><span id="s-tax">$0</span></div>
+                    <div class="summary-total"><span>Total</span><span id="s-total">$0</span></div>
+                    <button class="place-order-btn" onclick="placeOrder()">
+                        <i class="fas fa-check-circle" style="margin-right:8px"></i>Place Order
+                    </button>
+                    <p class="secure-row"><i class="fas fa-shield-alt" style="margin-right:4px"></i>Encrypted & Secure
+                    </p>
+                    <div class="cc-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal-ov" id="success-modal">
+        <div class="modal-card">
+            <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you for your purchase. Your order will be shipped within 2-3 business days. You'll receive a
+                tracking notification shortly.</p>
+            <a href="index.html" class="btn">Back to Home</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <span class="footer-logo-lg">LUXO</span>
+                    <p>Premium fashion, perfumes, and accessories.</p>
+                    <div class="social-row">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigate</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2026 LUXO. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        function fmt(n) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(n); }
+
+        (function renderCheckout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const el = document.getElementById('co-items');
+            el.innerHTML = cart.length ? cart.map(i => `
+    <div class="summary-item-row">
+      <img src="${i.image}" alt="${i.title}" onerror="this.src='https://via.placeholder.com/54x65'"/>
+      <div class="si-info"><div class="si-name">${i.title}</div><div class="si-qty">Qty: ${i.quantity}</div></div>
+      <div class="si-price">${fmt(i.price * i.quantity)}</div>
+    </div>`).join('') : '<p style="color:var(--muted);font-size:0.85rem">Cart is empty.</p>';
+
+            const sub = cart.reduce((a, i) => a + i.price * i.quantity, 0);
+            const tax = sub * 0.15;
+            const ship = sub > 100 || sub === 0 ? 0 : 15;
+            document.getElementById('s-sub').textContent = fmt(sub);
+            document.getElementById('s-tax').textContent = fmt(tax);
+            document.getElementById('s-ship').textContent = ship === 0 ? 'Free' : fmt(ship);
+            document.getElementById('s-total').textContent = fmt(sub + tax + ship);
+        })();
+
+        function toggleCard(radio) {
+            document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
+            radio.closest('.pay-option').classList.add('selected');
+            document.getElementById('card-fields').classList.toggle('show', radio.value === 'card');
+        }
+
+        function placeOrder() {
+            if (!document.getElementById('first-name').value.trim() || !document.getElementById('phone').value.trim()) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            localStorage.removeItem('cart');
+            document.getElementById('success-modal').classList.add('show');
+        }
+
+        document.getElementById('card-num')?.addEventListener('input', function () {
+            let v = this.value.replace(/\D/g, '').substring(0, 16);
+            this.value = v.replace(/(.{4})/g, '$1 ').trim();
+        });
+
+        document.getElementById('card-exp')?.addEventListener('input', function () {
+            let v = this.value.replace(/\D/g, '').substring(0, 4);
+            if (v.length > 2) v = v.substring(0, 2) + ' / ' + v.substring(2);
+            this.value = v;
+        });
+    </script>
+</body>
+
+</html>

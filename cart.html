@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shopping Cart — LUXO Store" />
+    <title>Cart — LUXO Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="products.html?cat=perfumes">Perfumes</a></li>
+                    <li><a href="products.html?cat=clothes">Clothes</a></li>
+                    <li><a href="products.html?cat=accessories">Accessories</a></li>
+                </ul>
+                <a href="index.html" class="logo">LUXO</a>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="cart.html" style="position:relative">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header" style="background:#111; height:28vh;">
+        <div>
+            <p class="ph-eyebrow">Review</p>
+            <h1>Your Cart</h1>
+        </div>
+    </div>
+
+    <section class="cart-page">
+        <div class="container">
+            <div class="cart-layout">
+
+                <!-- Items -->
+                <div>
+                    <div class="box">
+                        <h3>Cart Items</h3>
+                        <div class="cart-head">
+                            <span>Product</span>
+                            <span style="text-align:center">Price</span>
+                            <span style="text-align:center">Qty</span>
+                            <span style="text-align:center">Total</span>
+                            <span></span>
+                        </div>
+                        <div id="cart-rows"></div>
+                        <div id="empty-cart" class="empty-cart-wrap" style="display:none">
+                            <i class="fas fa-shopping-bag"></i>
+                            <p>Your cart is empty</p>
+                            <a href="products.html" class="btn">Shop Now</a>
+                        </div>
+                    </div>
+                    <div style="margin-top:16px;">
+                        <a href="products.html"
+                            style="font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--muted);text-decoration:none;">
+                            ← Continue Shopping
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="box" style="align-self:start;position:sticky;top:80px;">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">$0</span></div>
+                    <div class="summary-row"><span>Shipping</span><span id="co-ship">Free</span></div>
+                    <div class="summary-row"><span>Tax (15%)</span><span id="co-tax">$0</span></div>
+                    <div class="coupon-wrap">
+                        <input type="text" placeholder="Coupon code..." id="coupon-input" />
+                        <button class="btn" style="padding:12px 16px;font-size:0.72rem;letter-spacing:2px;"
+                            onclick="applyCoupon()">Apply</button>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="co-total">$0</span>
+                    </div>
+                    <button class="checkout-cta" onclick="location.href='checkout.html'">
+                        <i class="fas fa-lock" style="margin-right:8px"></i>Secure Checkout
+                    </button>
+                    <p class="secure-row"><i class="fas fa-shield-alt" style="margin-right:4px"></i>Encrypted & Secure
+                        Payment</p>
+                    <div class="cc-icons">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <span class="footer-logo-lg">LUXO</span>
+                    <p>Premium fashion, perfumes, and accessories.</p>
+                    <div class="social-row">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigate</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2026 LUXO. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        function fmt(n) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(n); }
+
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const rows = document.getElementById('cart-rows');
+            const empty = document.getElementById('empty-cart');
+            if (!cart.length) { rows.innerHTML = ''; empty.style.display = 'block'; updateSummary([]); return; }
+            empty.style.display = 'none';
+            rows.innerHTML = cart.map(item => `
+    <div class="cart-item-row">
+      <div class="ci-info">
+        <img class="ci-img" src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/70x85'"/>
+        <div><div class="ci-name">${item.title}</div><div class="ci-cat">${item.category || ''}</div></div>
+      </div>
+      <div class="ci-price">${fmt(item.price)}</div>
+      <div class="qty-box">
+        <button onclick="changeQty('${item.id}',-1)">−</button>
+        <span>${item.quantity}</span>
+        <button onclick="changeQty('${item.id}',1)">+</button>
+      </div>
+      <div class="ci-total">${fmt(item.price * item.quantity)}</div>
+      <button class="ci-remove" onclick="removeItem('${item.id}')"><i class="fas fa-times"></i></button>
+    </div>`).join('');
+            updateSummary(cart);
+        }
+
+        function updateSummary(cart) {
+            const sub = cart.reduce((a, i) => a + i.price * i.quantity, 0);
+            const tax = sub * 0.15;
+            const ship = sub > 100 || sub === 0 ? 0 : 15;
+            document.getElementById('co-subtotal').textContent = fmt(sub);
+            document.getElementById('co-tax').textContent = fmt(tax);
+            document.getElementById('co-ship').textContent = ship === 0 ? 'Free' : fmt(ship);
+            document.getElementById('co-total').textContent = fmt(sub + tax + ship);
+        }
+
+        function changeQty(id, d) {
+            let c = JSON.parse(localStorage.getItem('cart')) || [];
+            const i = c.find(x => x.id === id);
+            if (i) { i.quantity += d; if (i.quantity <= 0) c = c.filter(x => x.id !== id); }
+            localStorage.setItem('cart', JSON.stringify(c));
+            renderCart();
+        }
+
+        function removeItem(id) {
+            let c = (JSON.parse(localStorage.getItem('cart')) || []).filter(x => x.id !== id);
+            localStorage.setItem('cart', JSON.stringify(c));
+            renderCart();
+        }
+
+        function applyCoupon() {
+            const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+            alert(code === 'LUXO10' ? '🎉 10% discount applied!' : 'Invalid coupon code.');
+        }
+
+        renderCart();
+    </script>
+</body>
+
+</html>

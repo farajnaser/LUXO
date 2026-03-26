@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shop all perfumes, clothes, and accessories — LUXO Store" />
+    <title>Shop — LUXO Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Shop</a></li>
+                    <li><a href="products.html?cat=perfumes">Perfumes</a></li>
+                    <li><a href="products.html?cat=clothes">Clothes</a></li>
+                    <li><a href="products.html?cat=accessories">Accessories</a></li>
+                </ul>
+                <a href="index.html" class="logo">LUXO</a>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-heart"></i></a>
+                    <a href="cart.html" style="position:relative">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header"
+        style="background-image:linear-gradient(to right,rgba(0,0,0,0.8),rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1400&q=80'); background-size:cover; background-position:center;">
+        <div>
+            <p class="ph-eyebrow">Discover</p>
+            <h1>All Products</h1>
+        </div>
+    </div>
+
+    <section class="products-page">
+        <div class="container">
+            <div class="products-layout">
+
+                <!-- Sidebar -->
+                <aside class="sidebar-box">
+                    <div class="filter-section">
+                        <h4>Category</h4>
+                        <div class="cat-pills">
+                            <div class="cat-pill active" data-cat="all"><i class="fas fa-border-all"
+                                    style="width:18px"></i> All</div>
+                            <div class="cat-pill" data-cat="perfumes"><i class="fas fa-spray-can"
+                                    style="width:18px"></i> Perfumes</div>
+                            <div class="cat-pill" data-cat="clothes"><i class="fas fa-tshirt" style="width:18px"></i>
+                                Clothes</div>
+                            <div class="cat-pill" data-cat="accessories"><i class="fas fa-gem" style="width:18px"></i>
+                                Accessories</div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Price Range</h4>
+                        <input type="range" class="price-slider" min="0" max="1000" value="1000" id="price-slider" />
+                        <p class="price-display">Up to $<span id="price-val">1000</span></p>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Brand</h4>
+                        <label class="check-item"><input type="checkbox" checked /> LUXO Original</label>
+                        <label class="check-item"><input type="checkbox" checked /> Exclusive Series</label>
+                        <label class="check-item"><input type="checkbox" /> Bloom</label>
+                        <label class="check-item"><input type="checkbox" /> Aura</label>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Rating</h4>
+                        <label class="check-item"><input type="checkbox" checked /> ★★★★★</label>
+                        <label class="check-item"><input type="checkbox" checked /> ★★★★+</label>
+                        <label class="check-item"><input type="checkbox" /> ★★★+</label>
+                    </div>
+                </aside>
+
+                <!-- Products Grid -->
+                <div>
+                    <div class="toolbar">
+                        <span class="results-label"><strong>12</strong> products found</span>
+                        <select class="sort-sel" id="sort-sel">
+                            <option>Default sorting</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest</option>
+                            <option>Best Sellers</option>
+                        </select>
+                    </div>
+
+                    <div class="pg-grid" id="pg-grid">
+
+                        <div class="prod-card" data-cat="perfumes" data-id="p1">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80"
+                                    alt="Royal Oud" />
+                                <span class="prod-badge">Best Seller</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Perfumes</div>
+                                <div class="prod-name">Royal Oud</div>
+                                <div class="prod-price">$149</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="clothes" data-id="p2">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&q=80"
+                                    alt="Classic Shirt" />
+                                <span class="prod-badge new">New</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Clothes</div>
+                                <div class="prod-name">Premium Classic Shirt</div>
+                                <div class="prod-price">$79</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="accessories" data-id="p3">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80"
+                                    alt="Leather Bag" />
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Accessories</div>
+                                <div class="prod-name">Leather Tote Bag</div>
+                                <div class="prod-price">$149</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="perfumes" data-id="p4">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80"
+                                    alt="Bloom" />
+                                <span class="prod-badge sale">-20%</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Perfumes</div>
+                                <div class="prod-name">Bloom Signature</div>
+                                <div class="prod-price"><span class="old-price">$120</span>$96</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="clothes" data-id="p5">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80"
+                                    alt="Abaya" />
+                                <span class="prod-badge new">New</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Clothes</div>
+                                <div class="prod-name">Luxury Abaya</div>
+                                <div class="prod-price">$119</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="accessories" data-id="p6">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=600&q=80"
+                                    alt="Jewelry" />
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Accessories</div>
+                                <div class="prod-name">Gold Jewelry Set</div>
+                                <div class="prod-price">$299</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="perfumes" data-id="p7">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1608528577891-eb055944f2e7?w=600&q=80"
+                                    alt="Aura" />
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Perfumes</div>
+                                <div class="prod-name">Aura For Men</div>
+                                <div class="prod-price">$135</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="clothes" data-id="p8">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80"
+                                    alt="Evening Dress" />
+                                <span class="prod-badge">Best Seller</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Clothes</div>
+                                <div class="prod-name">Evening Gown</div>
+                                <div class="prod-price">$199</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="accessories" data-id="p9">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=600&q=80"
+                                    alt="Watch" />
+                                <span class="prod-badge">Limited</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Accessories</div>
+                                <div class="prod-name">Luxury Watch</div>
+                                <div class="prod-price">$449</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="perfumes" data-id="p10">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80"
+                                    alt="Misty" />
+                                <span class="prod-badge sale">-15%</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Perfumes</div>
+                                <div class="prod-name">Misty Rise</div>
+                                <div class="prod-price"><span class="old-price">$116</span>$98</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="clothes" data-id="p11">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80"
+                                    alt="Jacket" />
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Clothes</div>
+                                <div class="prod-name">Premium Jacket</div>
+                                <div class="prod-price">$169</div>
+                            </div>
+                        </div>
+
+                        <div class="prod-card" data-cat="accessories" data-id="p12">
+                            <div class="prod-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80"
+                                    alt="Belt" />
+                                <span class="prod-badge new">New</span>
+                                <button class="prod-like"><i class="far fa-heart"></i></button>
+                                <button class="quick-add add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="prod-info">
+                                <div class="prod-cat">Accessories</div>
+                                <div class="prod-name">Italian Leather Belt</div>
+                                <div class="prod-price">$79</div>
+                            </div>
+                        </div>
+
+                    </div><!-- /pg-grid -->
+                </div>
+
+            </div><!-- /products-layout -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <span class="footer-logo-lg">LUXO</span>
+                    <p>Premium fashion, perfumes, and accessories.</p>
+                    <div class="social-row">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Shop</h5>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products.html?cat=perfumes">Perfumes</a></li>
+                        <li><a href="products.html?cat=clothes">Clothes</a></li>
+                        <li><a href="products.html?cat=accessories">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Help</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2026 LUXO. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.querySelectorAll('.cat-pill[data-cat]').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                const cat = pill.dataset.cat;
+                document.querySelectorAll('.prod-card[data-cat]').forEach(c => {
+                    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+                });
+            });
+        });
+        const slider = document.getElementById('price-slider');
+        const pval = document.getElementById('price-val');
+        if (slider) slider.addEventListener('input', () => { pval.textContent = slider.value; });
+    </script>
+</body>
+
+</html>
